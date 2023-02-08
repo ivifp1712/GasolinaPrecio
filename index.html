@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consumo de gasolina</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <style>
+        /* centrar div */
+        body {
+            margin: 1%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+    
+    </style>
+</head>
+<body>
+    <h1> A pagar! </h1>
+    <div>
+        <p> Consumo L/100km <input type='number' step='0.01' value='1.60' id="consumo100" value="6.50"> </p>
+        <p> Precio Gasolina <input type='number' step='0.01' value='1.60' id="lgasolina"> </p>
+        <p> Distancia (km)<input type='number' step='0.01' value='10' id="distancia"> </p>
+        <p> Personas <input type="number" id="personas" value="2"> </p>
+        <p> <button onclick="calcular()"> Calcular </button> </p>
+        <p> El precio de la gasolina es: </p>
+        <p id="total"></p>
+        <p id="persona"></p>
+    </div>
+
+    <script>
+        function calcular() {
+            var consumo100 = document.getElementById("consumo100").value;
+            var lgasolina = document.getElementById("lgasolina").value;
+            var distancia = document.getElementById("distancia").value;
+            var personas = document.getElementById("personas").value;
+
+            var consumo = (distancia * consumo100) / 100;
+            var precio = consumo * lgasolina;
+            precio = precio.toFixed(2);
+            var precioPersona = precio / personas;
+            precioPersona = precioPersona.toFixed(2);
+
+            document.getElementById("total").innerHTML =  "El precio total es: " + precio + "€";
+            document.getElementById("persona").innerHTML =  "El precio por persona es: " + precioPersona + "€";
+        }
+    </script>
+</body>
+</html>
